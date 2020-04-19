@@ -1,12 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
-const App = () => {
-  return (
-    <View>
-      <Text>guild.ly</Text>
-    </View>
-  );
-};
+import VpnApp from './src/navigation/app';
 
-export default App;
+export default class App extends React.PureComponent {
+  render() {
+    return <VpnApp />;
+  }
+}
