@@ -1,7 +1,11 @@
+import welcome from '../assets/images/welcome.png';
+import encrypted from '../assets/images/encrypted.png';
+import privacy from '../assets/images/privacy.png';
+
 export const background = {
-  welcome: require('../assets/images/welcome.png'),
-  encrypted: require('../assets/images/encrypted.png'),
-  privacy: require('../assets/images/privacy.png'),
+  welcome,
+  encrypted,
+  privacy,
 };
 
 export default {
