@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 
 import ButtonOpacity from './components/ButtonOpacity';
+
+import { background } from '../constants/images';
 
 const styles = StyleSheet.create({
   root: {
@@ -23,12 +25,6 @@ const styles = StyleSheet.create({
   },
   contentImage: {
     flex: 1,
-    justifyContent: 'center',
-
-    margin: 10,
-  },
-  image: {
-    width: 30,
   },
   contentText: {
     flex: 0.2,
@@ -47,7 +43,30 @@ const styles = StyleSheet.create({
     color: '#d0d0d0',
     textAlign: 'center',
   },
+  image: { height: '100%', width: 390 },
 });
+
+const backgrounds = [
+  {
+    id: 1,
+    title: 'Secured, forever.',
+    description:
+      'Nam sit amet nisl ut ipsum ullamcorper vulputate et at enim. Vestibulum nulla est, tincidunt et est pharetra consectetur.',
+    img: background.welcome,
+  },
+  {
+    id: 2,
+    title: 'Secured, forever.',
+    description: '',
+    img: background.privacy,
+  },
+  {
+    id: 3,
+    title: 'Secured, forever.',
+    description: '',
+    img: background.encrypted,
+  },
+];
 
 class Welcome extends React.PureComponent {
   render() {
@@ -55,14 +74,32 @@ class Welcome extends React.PureComponent {
       <View style={styles.root}>
         <View style={styles.content}>
           <View style={styles.contentImage}>
-            <Text> Images. </Text>
+            <ScrollView
+              horizontal
+              pagingEnabled
+              scrollEnabled
+              decelerationRate={0}
+              scrollEventThrottle={16}
+              snapToAlignment="center"
+              showsHorizontalScrollIndicator={false}
+            >
+              {backgrounds.map((item) => (
+                <View
+                  key={item.id}
+                  style={{ justifyContent: 'center', alignItems: 'center' }}
+                >
+                  <Image
+                    source={item.img}
+                    resizeMode="center"
+                    style={styles.image}
+                  />
+                </View>
+              ))}
+            </ScrollView>
           </View>
           <View style={styles.contentText}>
-            <Text style={styles.titleContent}> Secured, forever. </Text>
-            <Text style={styles.textContent}>
-              Nam sit amet nisl ut ipsum ullamcorper vulputate et at enim.
-              Vestibulum nulla est, tincidunt et est pharetra consectetur.
-            </Text>
+            <Text style={styles.titleContent} />
+            <Text style={styles.textContent} />
           </View>
         </View>
         <View style={styles.started}>
